@@ -8,11 +8,11 @@ import java.util.*;
 
 public class Mystring {
 
-
+//ADD TWO STRING
 public void append(String firstString, String secondString) {
     System.out.println("After append :\n " + firstString + secondString);
 }
-
+// Count Total Number Of Words
 public void countWords(String inputString) {
     int wordCount = 0;
     for (int i=0;i<inputString.length();i++) {
@@ -22,7 +22,7 @@ public void countWords(String inputString) {
     }
     System.out.println("Total number of words are: " + (wordCount + 1));
 }
-
+// Replace a character in string with another Character
 public void replace(String inputString, char oldCharacter, char newCharacter) {
     String replacedString = "";
     for (int index = 0; index < inputString.length(); index++) {
@@ -35,7 +35,7 @@ public void replace(String inputString, char oldCharacter, char newCharacter) {
     }
     System.out.println("String after Replace: " + replacedString);
 }
-
+// Check whether the input string is palindrome or not
 public void isPalindrome(String inputString) {
     int leftIndex = 0;
     int rightIndex = inputString.length() - 1;
@@ -50,13 +50,13 @@ public void isPalindrome(String inputString) {
     }
     System.out.println("It is a palindrome");
 }
-
+// remove a specific length from a string starting from a startindex and a removelength
 public void splice(String inputString, int startIndex, int removeLength) {
     String splicedString = inputString.substring(0, startIndex) +
                            inputString.substring(startIndex + removeLength);
     System.out.println("After splice: " + splicedString);
 }
-
+// Split
 public void split(String inputString, String delimiter) {
     ArrayList<String> splitParts = new ArrayList<>();
     String currentSegment = "";
@@ -82,7 +82,7 @@ public void split(String inputString, String delimiter) {
         System.out.print(segment + "\t");
     }
 }
-
+// print the maximum repeating character in a string
 public void maxrepeat(String inputString) {
     int[] frequency = new int[256];
     for (int index = 0; index < inputString.length(); index++) {
@@ -104,7 +104,7 @@ public void maxrepeat(String inputString) {
     System.out.println("Character with maximum frequency: " + mostFrequentChar);
     System.out.println("Frequency: " + maxFrequency);
 }
-
+// sort the input string
 public void sort(String inputString) {
     char[] charArray = inputString.toCharArray();
     for (int i = 0; i < charArray.length - 1; i++) {
@@ -119,14 +119,14 @@ public void sort(String inputString) {
     String sortedString = new String(charArray);
     System.out.println("Sorted string: " + sortedString);
 }
-
+// rotate the string
 public void shift(String inputString, int shiftCount) {
     shiftCount = shiftCount % inputString.length();
     String shiftedString = inputString.substring(inputString.length() - shiftCount) +
                            inputString.substring(0, inputString.length() - shiftCount);
     System.out.println("Shifted string: " + shiftedString);
 }
-
+//reverse the string
 public void reverse(String inputString) {
     String reversedString = "";
     for (int index = inputString.length() - 1; index >= 0; index--) {
