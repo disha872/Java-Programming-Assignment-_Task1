@@ -15,8 +15,8 @@ public void append(String firstString, String secondString) {
 
 public void countWords(String inputString) {
     int wordCount = 0;
-    for (char currentChar : inputString.toCharArray()) {
-        if (currentChar == ' ') {
+    for (int i=0;i<inputString.length();i++) {
+        if (inputString.charAt(i) == ' ') {
             wordCount++;
         }
     }
