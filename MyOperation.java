@@ -1,3 +1,8 @@
+/**
+ * @Filename - Main.java
+ * @Description - Definition of functions
+ * @Author - Disha Toshniwal
+ */
 public class MyOperation {
 
     // 1. Count Unique Palindromes (Length >= 3)
@@ -9,7 +14,7 @@ public class MyOperation {
 
         int palindromeCount = 0;
         for (int startIndex = 0; startIndex < inputString.length(); startIndex++) {
-            for (int endIndex = startIndex + 2; endIndex < inputString.length(); endIndex++) {
+            for (int endIndex = startIndex + 1; endIndex < inputString.length(); endIndex++){
                 if (isPalindrome(inputString, startIndex, endIndex)) {
                     palindromeCount++;
                 }
@@ -28,13 +33,13 @@ public class MyOperation {
     }
 
     // 2. Nth Fibonacci (Recursive)
-    public int nthFibonacci(int n) {
-        if (n < 0) {
+    public int nthFibonacci(int number) {
+        if (number < 0) {
             System.out.println("Invalid input! Please enter a non-negative integer.");
             return -1;
         }
-        if (n <= 1) return n;
-        return nthFibonacci(n - 1) + nthFibonacci(n - 2);
+        if (number <= 1) return number;
+        return nthFibonacci(number - 1) + nthFibonacci(number - 2);
     }
 
     // 3. Snake to Camel Case
@@ -100,22 +105,41 @@ public class MyOperation {
 
     // 6. Display Characters (e.g., "a1b3" → "abbb")
     public void displayCharacters(String inputString) {
-        if (inputString == null || !inputString.matches("([a-zA-Z][0-9])+")) {
-            System.out.println("Invalid input! Please enter a valid pattern like 'a1b2c3'.");
-            return;
-        }
-
-        StringBuilder expandedString = new StringBuilder();
-        for (int index = 0; index < inputString.length() - 1; index++) {
-            char currentChar = inputString.charAt(index);
-            char nextChar = inputString.charAt(index + 1);
-            if (Character.isLetter(currentChar) && Character.isDigit(nextChar)) {
-                int repeatCount = nextChar - '0';
-                expandedString.append(String.valueOf(currentChar).repeat(repeatCount));
-            }
-        }
-        System.out.println("Expanded String: " + expandedString);
+    if (inputString == null || !inputString.matches("([a-zA-Z][0-9]+)+")) {
+        System.out.println("Invalid input! Please enter a valid pattern like 'a1b2c3'.");
+        return;
     }
+
+    StringBuilder expandedString = new StringBuilder();
+    int index = 0;
+
+    while (index < inputString.length()) {
+        char currentChar = inputString.charAt(index);
+
+        // Ensure currentChar is a letter
+        if (Character.isLetter(currentChar)) {
+            index++;
+            StringBuilder numStr = new StringBuilder();
+
+            // Collect all following digits (for multi-digit numbers)
+            while (index < inputString.length() && Character.isDigit(inputString.charAt(index))) {
+                numStr.append(inputString.charAt(index));
+                index++;
+            }
+
+            // Convert collected number string to integer
+            int repeatCount = Integer.parseInt(numStr.toString());
+
+            // Repeat the character
+            expandedString.append(String.valueOf(currentChar).repeat(repeatCount));
+        } else {
+            index++; // skip any invalid character just in case
+        }
+    }
+
+    System.out.println("Expanded String: " + expandedString);
+}
+
 
     // 7. Character Frequency Compression (e.g., "aaabb" → "a3b2")
     public String charFrequencyCompressed(String inputString) {
